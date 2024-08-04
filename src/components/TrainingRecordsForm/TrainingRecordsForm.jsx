@@ -10,10 +10,6 @@ export const TrainingRecordsForm = (props) => {
     e.target[0].value = ''
     e.target[1].value = ''
 
-    if (new Date(dateToSort).toString() === 'Invalid Date') return
-
-    if (distance <= 0 || isNaN(distance)) return
-
     props.handleFormData({ dateToShow: dateToShow, dateToSort: dateToSort, distance: distance })
   }
 
@@ -21,12 +17,12 @@ export const TrainingRecordsForm = (props) => {
     <form className='form' autoComplete='false' onSubmit={handleSubmit}>
       <div className="form-group1">
         <label htmlFor="date">Дата</label>
-        <input type="text" id='date' name='date' required />
+        <input type="date" id='date' name='date' required />
       </div>
 
       <div className="form-group2">
         <label htmlFor="distance">Пройдено км</label>
-        <input type="text" id='distance' name='distance' required />
+        <input type="number" id='distance' name='distance' min={0.1} step={0.1} required />
       </div>
       <button className="btn" type="submit">ОК</button>
     </form>
